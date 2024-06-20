@@ -1,0 +1,151 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    height: 90vh;
+}
+
+.title {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.release-by {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1.9rem;
+    font-weight: 500;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.input-wrapper {
+    flex:1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.fa-youtube {
+    color: #dc2626;
+}
+
+.remove-icon {
+    position: absolute;
+    font-size: 20px;
+    right: 22px;
+    color: #dc2626;
+    cursor: pointer;
+    transition: all 100ms;
+}
+
+.remove-icon:hover {
+    scale: 1.2;
+}
+
+.url-input {
+    flex:1;
+    margin-right: 0.6rem;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    border: 2px gray solid;
+    border-radius: 7px;
+    padding-right: 2.5rem;
+}
+
+.url-input:focus {
+    border-color: #0284c7;
+}
+
+.quality-select {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    border: 2px gray solid;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.quality-select:focus {
+    border-color: #0284c7;
+}
+
+.quality-select > option {
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+.convert-btn {
+    padding: 1.8rem;
+    background-color: #0284c7;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    transition: all 600ms;
+    font-size: 1.3rem;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.convert-btn:disabled {
+    background-color: #7dd3fc;
+    cursor: not-allowed;
+}
+
+.convert-btn:hover {
+    background-color: #0369a1;
+}
+
+.convert-btn:disabled:hover {
+    background-color: #7dd3fc;
+}
+
+.status-text {
+    margin: 1rem 0;
+    line-height: 23px;
+    font-weight: 600;
+}
+
+.status-text:empty {
+    display: none;
+}
+
+.error-text {
+    color: #dc2626;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.error-text:empty {
+    display: none;
+}
+
+.bottom-container {
+    align-self: end;
+    margin-top: auto;
+}
+
+.download-btn {
+    background-color: white;
+    cursor: pointer;
+    color: #0369a1;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+
