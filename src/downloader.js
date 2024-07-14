@@ -1,7 +1,7 @@
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
 const path = require('path');
-const ytdl = require('ytdl-core');
+const ytdl = require("@distube/ytdl-core");
 const log = require('electron-log');
 const {app} = require('electron');
 
