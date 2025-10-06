@@ -41,6 +41,12 @@ function toNodeReadable(stream) {
     throw new Error('Unsupported stream type for ffmpeg input');
 }
 
+const safe = s => s
+    .replace(/[<>:"/\\|?*\u0000-\u001F]/g, ' - ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/[. ]+$/g, '') || 'untitled';
+
 async function downloadVideo({videoId, quality}) {
     try {
 
@@ -49,7 +55,7 @@ async function downloadVideo({videoId, quality}) {
         const homeDir = app.getPath('home');
 
         const info = await yt.getBasicInfo(videoId);
-        const title = info.basic_info.title;
+        const title = safe(info.basic_info.title);
 
         // const output = path.join(homeDir, 'Downloads', `${Date.now()}.mp3`);
         const output = path.join(homeDir, 'Downloads', `${title}.mp3`);
