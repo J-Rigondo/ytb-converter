@@ -11,7 +11,7 @@ function createWindow () {
             contextIsolation: false,
         }
     });
-
+    win.setTitle(`Mp3 Converter V${app.getVersion()}`);
     win.loadFile('src/index.html');
 }
 
