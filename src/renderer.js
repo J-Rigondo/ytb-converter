@@ -15,12 +15,20 @@ convertBtn.addEventListener('click', () => {
     const quality = qualitySelect.value;
     errorText.textContent = '';
 
-    if (!url || !isValidUrl(url) || !quality) {
-        errorText.textContent = '올바른 링크를 입력해주세요.'
+    if (!url ||
+        !isValidUrl(url) ||
+        !quality) {
+        errorText.textContent = '올바른 링크를 입력해주세요.';
         return;
     }
 
-    ipcRenderer.send('convert', {url, quality});
+    const videoId = extractVideoId(url);
+    if(!videoId) {
+        errorText.textContent = 'url 전체를 올바르게 복사해주세요.';
+        return;
+    }
+
+    ipcRenderer.send('convert', {videoId, quality});
     statusText.textContent = 'Converting...';
 });
 
@@ -63,4 +71,10 @@ function isValidUrl(url) {
     } catch (e) {
         return false;
     }
+}
+function extractVideoId(url) {
+    const objUrl = new URL(url);
+    if (objUrl.searchParams.has('v')) return objUrl.searchParams.get('v');
+
+    return false;
 }
