@@ -1,6 +1,6 @@
 {
   "name": "ytb-converter",
-  "version": "4.0.0",
+  "version": "4.0.3",
   "main": "src/main.js",
   "author": "futuregoing",
   "license": "MIT",
@@ -13,30 +13,15 @@
   ],
   "scripts": {
     "start": "electron .",
-    "deploy": "rimraf dist && electron-builder"
+    "deploy": "rimraf dist && electron-builder",
+    "dist:win": "electron-builder --win --x64"
   },
   "build": {
-    "productName": "YtbConverter",
-    "appId": "com.futuregoing.ytbconverter",
-    "asar": false,
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
-    }
+    "asar": false
   },
   "devDependencies": {
-    "electron": "^31.0.1",
-    "electron-builder": "^24.13.3",
+    "electron": "^38.2.1",
+    "electron-builder": "^26.0.12",
     "electron-reload": "^2.0.0-alpha.1",
     "rimraf": "^5.0.7"
   },
