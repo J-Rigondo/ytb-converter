@@ -84,7 +84,7 @@ async function downloadVideo({videoId, quality}) {
             type: 'audio',   // audio | video | video+audio
             quality: 'best', // 내부 포맷에서 최상 오디오 선택
             format: "webm",
-            client: "TV" // 디사이퍼 에러가 발생 안하려면 TV만 가능
+            client: "WEB_EMBEDDED" // 디사이퍼 에러 이슈
         });
 
         await new Promise((resolve, reject) => {
