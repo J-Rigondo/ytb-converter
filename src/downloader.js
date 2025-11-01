@@ -15,9 +15,28 @@ async function getYT() {
     if (yt) return yt;
     // youtubei.js는 ESM이라 CommonJS에서 동적 import 사용
     const mod = await import('youtubei.js');
-    const {Innertube, UniversalCache} = mod;
+    const {Innertube, Platform, UniversalCache} = mod;
+
+    Platform.shim.eval = async (data /*: Types.BuildScriptResult*/, env /*: Record<string, Types.VMPrimative>*/) => {
+        const properties = [];
+
+        if (env?.n) {
+            properties.push(`n: exportedVars.nFunction("${env.n}")`);
+        }
+
+        if (env?.sig) {
+            properties.push(`sig: exportedVars.sigFunction("${env.sig}")`);
+        }
+
+        const code = `${data.output}\nreturn { ${properties.join(', ')} }`;
+
+        // 주의: 임의 사용자 입력은 절대 넣지 마세요.
+        // eslint-disable-next-line no-new-func
+        return new Function(code)();
+    };
+
     yt = await Innertube.create({
-        player_id: '0004de42', // 없으면 디사이퍼 에러
+        // player_id: '0004de42', // 없으면 디사이퍼 에러
         cache: new UniversalCache(true),
         lang: 'ko',
         location: 'KR',
@@ -101,5 +120,6 @@ async function downloadVideo({videoId, quality}) {
     }
 
 }
+
 
 module.exports = {downloadVideo};
